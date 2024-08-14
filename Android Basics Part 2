@@ -1,0 +1,101 @@
+APK File
+an APK file is nothing but a but a zipped file of the Java Source code or the Kotlin source code that we use to write applications with.
+So as soon as you unpack the zip file or the APK file, you get a file called as classes.dex.
+Once you convert this using your dex jar, you get the jar file of it and Decompiling this jar file gives you the Java source code.
+So there are two methods:
+	a. One is decoding an APK file 
+	you decode the APK file, you're going to get something that is called as smali code is an intermediate form of a source code.
+	And once you recompile the small code and sign it with your Android signature, you again get back your APK file.
+	So decoding is basically removing the signature and getting the Smali code of it.The smali code then can in turn get again changed back to the jar file and then you can view the jar file.
+	
+	b. the second one is unpacking the APK file.
+	Unpacking the APK file is going to give you classes.dex or the Dex source code or the Dex code. That is an intermediate code that is given by the Dalvik VM. And this text code on converting it to jar file, you will be getting the classes.jar file. This jar file on decompiling will finally give you the Java source code.
+	
+So there are two methods.One is decoding it to the smali code and second is unpacking, decoding or unpacking it to
+the dex code. And both of these methods will ultimately give you the Java source code file.
+
+
+Dalvik VM
+
+So the Dalvik VM or the Dalvik virtual machine is an Android virtual machine that is optimized for mobile devices.
+The Dex compiler converts the class files into .dex file that run on the Dalvik VM. Multiple class files are then converted into one particular dex file.
+The JAVAC tool or the Java compiler tool compiles the Java source code into the class file.
+The dx tool takes all the class files of your application and generates a single .dex file that is a specific program specific tool.
+
+This can be well understood by this particular diagram.
+
+
+So whenever you write the Java Kotlin code, it is force saved and something called as .Java file.
+This dot Java file when you compile it using the Java compiler or Java C, it gets converted into the class files.
+Now this class files is not understood by the Dalvik VM and from the Android architecture stack video, we know that the Dalvik VM is the heart of the Android architecture system, which helps you to install and run APK files on your Android system.
+So in order to make the Dalvik VM understand this code, we use something called as Dex compiler. This Dex compiler is going to take all the dot class files that has been created by the Java files or by the Java Source code or by the Java compiler, and it's going to compile all of them into one single .dex file. This dot text file is usually going to be classes dot text file.
+This classes dot text file along with the other files such as androidmanifest.xml and resources files and more Such files is going to get packed up into creating a .APK file.
+So this is the entire process that happens at the back end and Dalvik VM understands dot dex files.
+
+
+Smali
+
+
+One is the smalI code and one is the DEX code.
+
+Well, Smali is the human readable version of the Dalvik bytecode that is called as the dex code.
+Smali is similar to dex code, but the only difference is that smali is human readable version of the dex code.
+Technically, smali and BAKsmali are the names of the tools that is the assembler and the DISassembler respectively.
+consider smali code as the assembly level language in microcontrollers.
+
+The difference is that smali code is the readable version of this particular dalvik bytecode, whereas the dalvik bytecode is the or the dex bytecode is the version or is the version that is only understandable by the Dalvik VM.
+So this is the major difference between the smali code and the Dalvik bytecode.
+
+
+WebViews
+
+Web views are effective Web browsers embedded into Android applications.
+A very good example of a Web view as let's say there's a bank application and the bank wants to load its website inside its Android application.
+So Web view is a component that will help the bank application to load its website inside the Android application, which basically means that you can directly load the website inside your application. But with websites comes JavaScript and there lies the vulnerability.
+The vulnerability basically over here is JavaScript related vulnerability and that's XSS. So with web views, what happens is your JavaScript files can be inserted and your JavaScript code can also be run inside a particular web view.
+So if a website is vulnerable to, let's say, an XSS type of attack, web views can implement those XSS inside your Android applications as well.
+
+So there are basically two types of web views.
+	a. web view client.
+	The Web view client is best suited for simple HTML rendering, and this particular web view won't run
+	the JavaScript alert function.
+	So XSS tests using this particular function over here will be invalid. Why?
+	Because web view client does not allow JavaScript to be run on its particular web view page.
+	It only allows simple HTML rendering, which basically means that only the HTML code can be seen inside that particular page. JavaScript related code won't be able to use.
+	
+	b. Web Chrome client:
+	Web Chrome client is basically a Chrome browser inside your application and thus does allow your JavaScript code to get executed.
+	So if you're using web Chrome client, then there is a possibility that your application might be vulnerable to certain JavaScript attacks. 
+	Now web views are not just related to JavaScript based attacks or cross-site scripting.
+	Web views also contain another vulnerability that is to access files or to access content providers. You can use a particular scheme instead of Http, such as a file scheme or a content scheme or a data scheme. And using this particular scheme you would be able to load any internal files that will be present inside the system. (file://)
+
+
+Application signing and verification
+
+- Android requires all of its application to be digitally signed with a certificate before they can be installed.
+- Android uses the certificate to identify the author of an application. So before you push any application to play store, before it gets downloaded onto the client system, it requires a signature. We call it as application signing that needs to be performed before it can be downloaded inside any other Android system.
+- Now, this particular signature is basically used to verify which particular developer had authorized or had signed this particular application. Each and every developer signature would be different.
+- To run application on the device. It should be signed 
+- when the application is installed onto our device. The package manager verifies that whether the application has been properly signed with the certificate inside the APK file or not. If it's not signed, your application won't be running inside your Android system.
+- Applications can usually be self-signed or can be signed through a certificate authority. In case of Android applications, the certificate authority is going to be Google Play store.
+- Application signing ensures that one application can't access any other application except through well defined IPC and also that it is passed unmodified to the devices.
+- So what basically happens is that let's say if you are downloading an application from some third party website that is not signed by the official developer of that particular application, okay, you can have a chance that this particular application might be vulnerable to some source code or there might be some changes in the source code that might have happened. 
+- A developer should always ensure or should always verify that the signature that he or she has signed the application with should always be the same. If the signature is in a mismatch condition. The application should not be able to run onto a particular device. This prevents a vulnerability stating that the source code has been modified.
+- So if we want to prevent the vulnerability of source code modification, which around 88% of applications
+present in the play store do not have it. What you have to do is you have to make a provision to verify whether both of the signatures are present or not.
+- This in turn becomes another vulnerability that can be reported with a penesting reports.
+- Application signing are done in three versions.
+One is version one (v1), version two (v2) and version three(v3).
+- A developer should always sign a particular application with version two or version three.
+
+Let's talk about application verification.
+- Android 4.2 and later supports application verification. Users can choose to enable verify apps and have applications evaluated by an application verifier prior to installation.
+- This basically means that Google Play store will always help you out to know whether an application is a malicious one or not.
+- App verification can alert the users if they try to install an app that might be harmful.
+- If an application is especially bad, it can block installation as well. So you must have been seeing the storms such stating that this application is harmful. Do not install it. However, you can still install that particular application on your own risk.
+
+
+AndroidManifest.xml file
+
+- Androidmanifest.xml file describes essential information about the application.
+- It stores all sensitive keys such as API keys, sensitive information, secret credentials, hardcoded keys, application permissions hardcoded strings such as session related IDs, etcetera.
