@@ -1,0 +1,174 @@
+Types of Android applications
+	a. NATIVE: develop for specific operating system or platform like java and Kotlin used in android and swift in IOS mobile applications.
+	b. WEB-BASED: application take WebView or taking websites directly and pasting in the android application. WebView is a component in android OS
+	c. HYBRID: Combination of both and require emulator for testing. (found in real world for testing). Created using FLUTTER, REACT NATIVE also called progressive applications.
+
+Android Architecture Stack
+
+It has four main components, 
+	a) Applications: (includes all third party applications.)
+	The application component is where all the all the applications are pre-installed inside
+	the system or any application that installed from play store would be presented inside the application structure or the application layer of the Android architecture stack.
+	So examples include contacts, camera, WhatsApp, Google Play store, clock calendar, etcetera.
+	All of these applications would be the first topmost layer that is called as the application layer of the Android architecture stack.
+	
+	b) application framework: (provides various classes for creation of Android applications. For example: Activity Manager )
+	Now application framework contains managers, or you can call them as framework libraries that help you build these particular applications.
+	So for example, WhatsApp application may have a functionality to provide notifications. This functionality is managed by a notification manager.
+	WhatsApp may have functionality to grab data from a device's storage system. This is done using the content providers.
+	WhatsApp may have different types of activities present inside IT activities such as camera activity or let's say microphone activity, Video activity, Photo activity, etcetera.
+	All of these activities are managed by activity manager and so on and so forth.
+	All of the different functionalities that are present inside an application.
+	They all are managed by one of the applications framework.
+	Be it activity manager, notifications, manager, content providers, etcetera.
+	
+	c) Android runtime: (the most important layer or the heart of the entire Android architecture stack, which is similar to JVM that is called as the Java Virtual Machine. Dalvik VM is similar to the Java Virtual Machine, which enables applications to run and provide various platform libraries.)
+	has two components
+		a. Dalvik VM: Dalvik VM stands for the Dalvik Virtual Machine.
+	It is similar to the Java virtual machine that we that we can find while developing Java files or while developing Java programs.
+	Dalvik Virtual machine converts the source code that is written in high level language user readable language (java code or Kotlin code) into the bytecode that is understandable by the machine.
+	
+	d) Linux kernel: (helps you to connect with the hardware using various types of drivers. It also provides you memory management, process, management, security, etcetera.)
+	Linux kernel provides you the access to all of these drivers, be it the WiFi driver, be it the display driver, the USB driver, audio driver or Bluetooth driver, etcetera.
+	It also provides you the security of the operating system as well.
+	So underneath the Linux kernel helps you to connect your Android applications with these hardware based drivers.
+
+Android Components:
+There are four types of different components
+	a. Activities: 
+	activity represents a single screen with a user interface and shot activity performs actions on the screen.
+	So for example, let's say notification, or there's a notification pop up that comes when a WhatsApp message is received.
+	Activity of notifying the user using a small rectangle box is called as a notifications activity.
+	Let's say your battery is low, you get those symbols, you get those notifications where your battery reduced to 15%. You you are on low battery. So that's a notifications or low battery activity.
+	
+	b. Services, 
+	Services is a component that runs in the background to perform long running operations.
+	So for example, you open the application. you see data is being transmitted or you get all the data that you that you saw when you last left the application.
+	So services is a component that helps you to gather all of this data from the memory and save it or show it on inside your application.
+	
+	c. Broadcast Receivers
+	Broadcast receivers simply respond to broadcast messages from other applications or from the system. A very good example of this is whenever you are on low power mode, okay, let's say your battery level has reduced from 100% to 15%.
+	You might have seen that your camera application is not working. As soon as you open your camera application, there is a message that gets displayed that your battery is low and hence we cannot allow you to use camera.
+	How does the camera application know whether my battery is 15% or whether it's 100%? This is the case of broadcast receiver or camera application. Has a broadcast receiver set up with it wherein all the broadcast messages. So as soon as your battery gets low up low till 15%, it sends a broadcast signal to everyone stating that the battery of the phone is low to 15% and all the broadcast receivers receive this message and in turn they act accordingly to this message.
+	Another example let's say normal call as soon as you put your phone on airplane mode, you should not be receiving any calls. How will the phone app know that you are not going to receive a call or you should not make a call as soon as you turn on the airplane mode? Does a broadcast seek broadcast signal that gets sent to each and every application stating that the phone is on airplane mode and in turn the phone application will act accordingly? it's going to say that since the phone is on airplane mode, I can neither make calls, neither I can receive any calls. And that's how broadcast receivers come into picture.
+	 
+	d. Content Providers
+	A content provider component supplies data from one application to others on request.
+	So for example, let's say you have a file stored on your SD card and you want to move it to WhatsApp and send it to someone. Okay, so what's going to happen is you are going to go inside the inside the file Explorer and you're going to select that particular file and click on share. Now, once you click on share, it gets uploaded to your WhatsApp chat and it goes and it sends to the whichever user you have selected. But what happens at the back end is content providers take this file, they read the file and they write the file inside WhatsApp and then they are going to send it.
+	So this is how content providers help you in transmitting of data from one particular application to another application.
+	
+
+Android file system
+
+Basically, Android is a version of Linux, at the back end or at the very lowest level. It also uses the same Linux kernel that is used in other versions such as Kali, Linux or Ubuntu. The main file system that starts or the main hard disk is denoted by slash inside slash. We have all sorts of different files or all sorts of different folders such as boot, such as system recovery data cache and other miscellaneous folders such the demo time.
+
+So in order to go inside the Android file system, write command : 
+	adb Shell 
+By default I am the root user of the device.
+use the superuser command in order to become the superuser of this particular device.
+	superuser 
+And now I have got the shell as the superuser or the root user of this particular emulator.
+
+	a. boot folder.
+	Let's run the boot folder. You can see the boot folder is not available right now. One because we are using an emulator.
+	However, if you are using a real test, you would be able to see the boot folder.
+	The boot folder contains all the all, all the initial or all the initial programs that needs to be started.
+	It contains the Init program ROMs that we call it contains the Android kernel and all sorts of different programs that runs as soon as your system gets started up.
+	
+	b. system folder.
+	And as you can see over here, we have a system folder installed with us and said system folder.
+
+	c. user folder.
+	Inside the user folder, you would be containing all the different files and folders related to that particular user.
+	
+	d. recovery folder.
+	there's not a recovery folder that has been installed. Why? Because my emulator has not been backed up yet. As soon as my emulator is going to get back up, it's going to create a folder called as the Recovery folder.
+	
+	e. data folder.
+	The data folder is the one that is very much important for us. all the data related to a particular application has been stored over here inside the application bundle ID.
+	So for example, let's say for Diva, we have a bundle ID called .diva, inside this. If you just look, you can see there's a cache data, There are specific databases. 
+	Also, you would be getting over here, something called as shared preferences. You would be seeing a folder. a file name that says preferences.xml file and you can see that username and password is being stored in clear text.
+	Data contains all other data belonging to a particular Android device system data. We use a specific data such as SMS contacts, applications, etcetera.
+	
+	f. cache.
+	You can see a folder called as cache. This cache would be containing all sorts of different folders such as backup recovery, backup underscore stitch.
+	Again, since we did not have a recovery or we do not have a backup, this folder would be empty.
+	
+	g. SD card.
+	SD card basically means the storage of your Android device.
+	If you click over here, you can see there are different types of storage and these storage are the same that you can visit using the file Explorer and going inside downloads, documents, etcetera. So these are the same storage that is located inside SD card.
+	
+	h. There are other such miscellaneous folders as well such as temp, bin, etcetera.
+	
+	
+Android Data storage Options
+
+So there are five data storage options that are available.
+	a. Shared preferences
+	Shared preferences is a category or a data storage option wherein developers generally store information related to application preferences, such as whether the application is used in light mode or dark mode, etcetera.
+	The data is stored in format of key value pairs. Usually it is stored in XML files. 
+	Share preferences is generally used to store some non-sensitive data.
+	However, developers make mistakes and they store sensitive information in these shared preferences which any attacker can access it in order to protect shared preferences a developer must always use some encrypted form in order to encrypt the data and then store it inside shared preferences. 
+	
+	b. SQLite.
+	SQLite is used to store private data for the app. The data stored over here is in a structured format, so the data stored over here might be related to the applications internal data or applications users data or let's say there's an e-commerce application wherein you can add items in the cart and then you can make payments.
+	
+	c. file storage
+	File storage is another type of data storage option that is available with Android wherein you can use and store data inside memory cards or SD cards.
+	File storage option is something that is very dangerous because any attacker can remove your SD card, insert it into his or her phone, and then can reclaim or read the particular data. Hence it is it is noted or it is recommended that you should not use or store sensitive data in memory card or SD card.
+	
+	d. content providers
+	Content providers are used to store semi-structured data with user configurable data access.
+	You usually use the content Android component, which allows you to retrieve and store data inside the content providers.
+	
+	e. cloud storage.
+	cloud storage option more frequently used or are used or multiple times.
+	Now there are some databases such as Firebase Database, MySQL, etcetera that allows you or that gives you the access to store data in on cloud.
+	So these are third party data storage options developed by, let's say Firebase is developed by Google. MySQL is another such storage option wherein you can call or store data using an API that is already allocated to you whenever you set up your firebase storage or MySQL storage, you can use the API and call and store data inside these cloud storage options.
+	
+Transferring files between android and PC
+
+you can transfer files from Android device to your PC using a command called : adb.
+ADB stands for Android Debugger.
+It is a tool that allows you to perform various different tasks.
+One such task is to pull files from your Android device to your PC device.
+Now you can pull files by using the simple command called as: adb pull <path to file> <destination path>
+
+Extract application using APK extractor
+
+It is important to extract applications.
+Because for static analysis you would be requiring the APK file and since you would be downloading the application directly from the play store, it becomes extremely important to extract it and bring it to your PC.
+
+So there are two methods of extracting an APK file.
+	a. One is using APK extractor 
+			i. download the APK on your device.
+			ii. download APK extractor for free from play store. (Kiwi Inc.)
+	
+	b. downloading it directly from the third party app store.
+
+
+Decompiling applications
+	a. dex2jar
+	Now every APK file is a zip copy or a zip version of its source code.So in order to unzip the APK file, you first have to use.
+	You first have to use something called as Winrar that is going to help you unzip the file. You will be able to view the dex code of it.
+	This dex code then be then can be converted to the jar file using a tool called as dex2jar and then you can use JD GUI that is a Java based source code view of view of file using which you would be able to view the jar file that we have recently created.
+			./d2j-dex2jar.sh test.apk
+	Once converted, you can see there's a new file that is created that is test.jar file.
+	
+	Now you can use a viewer application such as GUI. So you are going to use or you can install JDG by visiting its official website.
+			java -jar jd-gui.jar 
+	Once open, all you have to do is just drag and drop the jar file and you would be able to view the source code, the entire source code.
+	Now, once we are able to view the entire source code, we can perform all the different types of static analysis vulnerabilities over here that we are going to look in the further section.
+	
+	b. Jadx GUI
+	Jade is a free open source decompiler tool. And this version or in this tool, all you need to do is you need to drag and drop your APK file and
+	Jade is going to do all the work for you.
+	You do not need to convert your file to Dex to jar or you do not need to extract it or do something like that.
+	All you have to do is just drag and drop or simply open the application using jade and you will be able to view the entire source code of this particular file.
+	
+	You can install it by going onto its official GitHub repo.
+	
+	drag and drop it inside our GUI.
+	
+	So resources such as RES. you can view all the different types of resources. You can view the Androidmanifest.xml file. And you can view different files such as strings.xml, etcetera. And you can find some sensitive information, that might have been hidden in these files.
+	
